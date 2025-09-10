@@ -1,22 +1,14 @@
-import Header from "./Components/Header/Header.js";
-import Search from "./Components/Search/Search.js";
-import Dropdown from "./Components/Dropdown/Dropdown.js";
-import Main from "./Components/Main/Main.js";
-import { useState } from "react";
+import Header from "./Components/header/Header.js";
 import "./style.css";
+import { Outlet } from "react-router";
+import {  ThemeProvider } from "./contexts/ThemeContext.jsx";
+
 const App = () => {
-  
-  let [searchItem, setSearchItem] = useState("");
-  let [filterValue, setFilterValue] = useState("");
   return (
-    <>
+    <ThemeProvider>
       <Header />
-      <div className="search-content">
-        <Search setSearchItem={setSearchItem} />
-        <Dropdown setFilterValue={setFilterValue} />
-      </div>
-      <Main searchItem={searchItem} filterValue={filterValue} />
-    </>
+      <Outlet />
+    </ThemeProvider>
   );
 };
 

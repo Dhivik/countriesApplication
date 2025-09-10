@@ -1,4 +1,5 @@
 export default function Search({setSearchItem}) {
+  
   return (
     <div className="search-container">
       <i className="fa-solid fa-magnifying-glass"></i>

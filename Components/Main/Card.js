@@ -1,6 +1,7 @@
+import {Link} from "react-router-dom";
 export default function Card({ Image, CountryName, Capital, Population, Region }) {
   return (
-    <div className="country-card">
+    <Link className="country-card" to={`/${CountryName}`}>
       <img src={Image} alt={CountryName} />
       <div className="card-text">
         <h3 className="card-title">{CountryName}</h3>
@@ -17,6 +18,6 @@ export default function Card({ Image, CountryName, Capital, Population, Region }
           {Capital}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

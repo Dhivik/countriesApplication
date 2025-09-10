@@ -1,18 +1,25 @@
-import Button from "../Button/Button.js";
-import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export default function Header() {
-  const [mode, setMode] = useState("light");
-  const toggleMode = () => {
-    setMode(mode === "light" ? "dark" : "light");
-  };
+  const [darkMode, setDarkMode] = useContext(ThemeContext);
+
   return (
-    <header className="header-container">
+    <header className={`header-container ${darkMode ? "dark-mode" : " "}`}>
       <div className={"header-content"}>
         <h2 className="title">Where in the world</h2>
-        <p onClick={toggleMode} className={mode === "dark" ? "toggle-mode-button dark-mode" : "toggle-mode-button"}>
-          <i className="fa-regular fa-moon"></i>
-          {mode === "light" ? "Dark Mode" : "Light Mode"}
+        <p
+          onClick={() => {
+            setDarkMode(!darkMode);
+            localStorage.setItem("darkMode", !darkMode);
+          }}
+          className={
+            darkMode ? "toggle-mode-button dark-mode" : "toggle-mode-button"
+          }
+        >
+          {<i className={`fa-regular fa-${darkMode ? "sun" : "moon"}`}></i>}
+          &nbsp;
+          {darkMode ? "Light Mode" : "Dark Mode"}
         </p>
       </div>
     </header>

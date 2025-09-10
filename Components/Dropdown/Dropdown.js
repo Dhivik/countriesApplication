@@ -1,12 +1,12 @@
-export default function Dropdown({ setFilterValue }) {
+export default function Dropdown({ setSearchItem }) {
   return (
     <select
       name="Filter"
       id="Filter"
       className="filter"
-      onChange={(e) => setFilterValue(e.target.value)}
+      onChange={(e) => setSearchItem(e.target.value)}
     >
-      <option value="All">Filter by Region</option>
+      <option hidden>Filter by Region</option>
       <option value="africa">Africa</option>
       <option value="antarctic">Antarctic</option>
       <option value="americas">Americas</option>
